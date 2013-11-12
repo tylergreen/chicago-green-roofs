@@ -1,0 +1,16 @@
+{
+  "name": "chi-green-roofs",
+  "version": "1.0.0",
+  "main": "path/to/main.css",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "leaflet": "0.6.x",
+    "angular": "1.2.x",
+    "angular-leaflet-directive": "0.6.x"
+  },
+  "devDependencies": {
+  }
+}
