@@ -16,10 +16,10 @@ angular.module('roofApp')
 	console.log(L);
 	function mkIcon(total_sq_ft, vegetated_sq_ft) {
 	//	Use L.DivIcon
-		var icon = L.icon({
+		var icon = L.divIcon({
 //            iconUrl: 'http://cdn.leafletjs.com/leaflet-0.6.4/images/marker-icon.png',
-            iconUrl: 'img/marker-icon.png',
-//								 className: 'myicon',
+//            iconUrl: 'img/marker-icon.png',
+								 className: 'myicon',
 //								 html: 5,					  
 //			  className: 'myicon',
  //           shadowUrl: 'http://cdn.leafletjs.com/leaflet-0.6.4/images/marker-shadow.png',
@@ -31,8 +31,8 @@ angular.module('roofApp')
 			//this also needs its own tested fn for this data set
 //			iconColor: 
 //            iconSize: [25, 41],
-            iconAnchor: [12, 40],
-            popupAnchor: [0, -40]
+//            iconAnchor: [12, 40],
+//            popupAnchor: [0, -40]
 //            shadowSize: [41, 41],
 //            shadowAnchor: [12, 40]
 
