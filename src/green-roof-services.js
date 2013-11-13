@@ -43,10 +43,13 @@ angular.module('roofApp')
 	// col 17 is total sq ft
 	// col 18 is vegetated sq ft
 	var result = rawRoofData.data.map(function(loc) {
-										  return { lat: loc[20],
-												   lng: loc[21],
-												   icon: mkIcon(loc[17], loc[18] ),
-												   message: loc[13] + " percent: " + (loc[18] / loc[17]).toString()  } });
+										  var lat = loc[20];
+										  var lng = loc[21];
+										  var total_sqft = loc[17];
+										  var veg_sqft = loc[18];
+										  return  L.circle([lat, lng], 30, {
+																} ); 
+									  } );
 
 	console.log('marker:');
 	console.log(result);

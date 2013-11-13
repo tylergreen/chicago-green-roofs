@@ -1,6 +1,21 @@
         angular.module("roofApp", ["leaflet-directive"]);
         function DemoController($scope, roofCoordinates) {
-            var local_icons = {
+
+			var map2 = document.getElementById("#map2");
+			var chicago = [41.8819, -87.6278];
+			var map = L.map('map2').setView(chicago, 8);
+
+			L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+							attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+    maxZoom: 18
+}).addTo(map);
+
+
+          	for(var i = 0; i < roofCoordinates.length; i++){
+				roofCoordinates[i].addTo(map);
+			}
+
+	        var local_icons = {
                 leaf_icon: L.icon({
                     iconUrl: 'img/leaf-green.png',
                     shadowUrl: 'img/leaf-shadow.png',
