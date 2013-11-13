@@ -55,8 +55,9 @@ angular.module('roofApp')
 										  console.log(color);
 										  return   L.circle([lat, lng], marker_size, {
 															   color: color,
-															   message: "Foo"
-																} ).bindPopup("address: " + loc[13] + " total sq ft: " + total_sqft + " vegetated sq ft: " + veg_sqft + "percentage utilized: " + percentage); 
+																opacity: 0.75
+
+																} ).bindPopup("address: " + loc[13] + " total sq ft: " + total_sqft + " vegetated sq ft: " + veg_sqft + " percentage utilized: " + percentage); 
 										 
 
 									  } );

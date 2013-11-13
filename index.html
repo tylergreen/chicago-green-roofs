@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="roofApp">
   <head>
+	<title> Chicago Green Roofs </title>
     <script src="bower_components/leaflet/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
     <script src="bower_components/angular-leaflet/dist/angular-leaflet-directive.min.js"></script>
@@ -12,9 +13,17 @@
     <script src="src/app.js">  </script>
     <script src="src/green-roof-services.js">  </script>
   </head>
+  <h1> Chicago Green Roofs </h1>
+  <ul>
+	<li>size of marker is correlated with the size of roof</li>
+	<li>greener markers indicate more coverage by plants</li>
+	<li>grayer markers indicate less coverage by plant</li>
+	<li>click marker for detailed building info</li>
+  </ul>
+
   <body ng-controller="DemoController">
    
-	  <div id="map2">HI</div>
+	  <div id="map2"></div>
 
   </body>
 </html>
