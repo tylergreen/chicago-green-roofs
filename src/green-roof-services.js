@@ -47,7 +47,13 @@ angular.module('roofApp')
 										  var lng = loc[21];
 										  var total_sqft = loc[17];
 										  var veg_sqft = loc[18];
-										  return  L.circle([lat, lng], 30, {
+										  var green = Math.round(16 * (veg_sqft / total_sqft)) ;
+										  var red = 0;
+										  var marker_size = total_sqft / 5000;
+										  var color = '#' + red.toString(16)  + green.toString(16) + '0';
+										  console.log(color);
+										  return  L.circle([lat, lng], marker_size, {
+															   color: color
 																} ); 
 									  } );
 
