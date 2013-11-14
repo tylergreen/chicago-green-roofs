@@ -10,65 +10,47 @@ angular.module('roofApp').constant('roofdata2', {                    m1: {
 });
 
 
+
+
 angular.module('roofApp')
 	.factory('roofCoordinates', ['rawRoofData', function(rawRoofData){
-	console.log('EL:');
-	console.log(L);
-	function mkIcon(total_sq_ft, vegetated_sq_ft) {
-	//	Use L.DivIcon
-		var icon = L.divIcon({
-//            iconUrl: 'http://cdn.leafletjs.com/leaflet-0.6.4/images/marker-icon.png',
-//            iconUrl: 'img/marker-icon.png',
-								 className: 'myicon',
-//								 html: 5,					  
-//			  className: 'myicon',
- //           shadowUrl: 'http://cdn.leafletjs.com/leaflet-0.6.4/images/marker-shadow.png',
-////           shadowUrl: 'img/leaf-shadow.png',
-		   // this needs its own tested fn
-//            iconSize: [Math.max(5, 25  * percent_sq_ft), Math.max(5, 25 * percent_sq_ft)],
-								 iconSize: [(vegetated_sq_ft * 50) / (839593 - 303), (vegetated_sq_ft * 50) / (839593 - 303) ],
-//            iconSize: [25, 41], 
-			//this also needs its own tested fn for this data set
-//			iconColor: 
-//            iconSize: [25, 41],
-//            iconAnchor: [12, 40],
-//            popupAnchor: [0, -40]
-//            shadowSize: [41, 41],
-//            shadowAnchor: [12, 40]
 
-	});
-	return icon;
-	};
+		function summary(loc){
+			var address = loc[13];
+			var total_sqft = loc[17];
+			var veg_sqft = loc[18];
+			var percentage = (veg_sqft / total_sqft);
 
-	// col 17 is total sq ft
-	// col 18 is vegetated sq ft
-	var result = rawRoofData.data.map(function(loc) {
-										  var lat = loc[20];
-										  var lng = loc[21];
-										  var total_sqft = loc[17];
-										  var veg_sqft = loc[18];
-										  var percentage = (veg_sqft / total_sqft)
-										  var green = Math.round(16 * percentage) ;
-										  var red = 0;
-										  var marker_size = total_sqft / 5000;
-										  var color = '#' + red.toString(16)  + green.toString(16) + '0';
-										  console.log(color);
-										  return   L.circle([lat, lng], marker_size, {
-															   color: color,
-																opacity: 0.75
+			return ("<ul><li>address: " + address + "</li>"
+					+ "<li>total sqft: " + total_sqft + " </li>"
+					+ "<li>vegetated sq ft: " + veg_sqft + "</li>"
+					+ "<li>percentage utilized: " + percentage + "</li></ul"); 
+		};
 
-																} ).bindPopup("address: " + loc[13] + " total sq ft: " + total_sqft + " vegetated sq ft: " + veg_sqft + " percentage utilized: " + percentage); 
-										 
+		function markerize(loc){		
+			var lat = loc[20];
+			var lng = loc[21];
+			var total_sqft = loc[17];
+			var veg_sqft = loc[18];
+			var percentage = (veg_sqft / total_sqft);
+			var green = Math.round(16 * percentage) ;
+			var red = 0;
+			var marker_size = total_sqft / 5000;
+			var color = '#' + red.toString(16)  + green.toString(16) + '0';
 
-									  } );
-
-	console.log('marker:');
-	console.log(result);
-
-	  return result;
-	  }
-]
-);
+			return L.circle([lat, lng], marker_size, {
+				color: color,
+				opacity: 0.75
+			} ).bindPopup(summary(loc))
+		};
+		
+		// col 17 is total sq ft
+		// col 18 is vegetated sq ft
+		var result = rawRoofData.data.map(function(loc) { return markerize(loc) });
+		return result;
+	}
+								]
+			);
 
 
 // raw green roof data from Chicago City
